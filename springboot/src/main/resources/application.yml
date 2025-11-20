@@ -1,0 +1,37 @@
+server:
+  port: 9090
+
+# 数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USER:liwenyu}
+    password: ${DB_PASSSWORD:123456}
+    url: jdbc:mysql://${DB_URl:lilili.qicp.vip:33306}/farm_system?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2b8&allowPublicKeyRetrieval=true
+
+  mail:
+    host: smtp.163.com # 邮件服务器地址
+    port: 25                      # 邮件服务器端口
+    username: 19384102561@163.com   # 发件人邮箱地址
+    password: ${MAIL_PASSWORD:helloworld}    # 邮箱密码
+    properties:
+      mail:
+        smtp:
+          auth: true                    # 开启身份验证
+          starttls:
+            enable: true                # 启用 STARTTLS
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+# 文件上传的前缀url
+fileBaseUrl: http://lilili.qicp.vip:9080/api
+
